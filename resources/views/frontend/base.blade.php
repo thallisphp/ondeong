@@ -1,4 +1,4 @@
-html<!doctype html>
+<!doctype html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -12,9 +12,23 @@ html<!doctype html>
 
     @yield('head')
 </head>
-<body onload="initialize()">
+<body>
 
 @yield('conteudo')
+
+<script>
+    window.asset = function(caminho){
+        return "{!! asset('/') !!}" + caminho;
+    };
+</script>
+
+{!! Html::script('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js') !!}
+{!! Html::script('http://maps.googleapis.com/maps/api/js?key=AIzaSyCsbzuJDUEOoq-jS1HO-LUXW4qo0gW9FNs&sensor=false') !!}
+{!! Html::script('frontend/js/bootstrap.js') !!}
+{!! Html::script('frontend/js/owl.carousel.js') !!}
+{!! Html::script('frontend/js/pxgradient-1.0.2.jquery.js') !!}
+{!! Html::script('js/app.js') !!}
+
 @yield('scripts')
 </body>
 </html>
