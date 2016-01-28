@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\LocaisController;
 use Collective\Annotations\AnnotationsServiceProvider as ServiceProvider;
 
 class AnnotationsServiceProvider extends ServiceProvider
@@ -21,6 +22,7 @@ class AnnotationsServiceProvider extends ServiceProvider
      */
     protected $scanRoutes = [
         HomeController::class,
+        LocaisController::class,
     ];
 
     /**

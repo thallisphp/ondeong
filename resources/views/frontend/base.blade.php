@@ -20,6 +20,12 @@
     window.asset = function(caminho){
         return "{!! asset('/') !!}" + caminho;
     };
+
+    window.urls = {
+        locais: {
+            teste: '{!! route('locais.teste') !!}'
+        }
+    };
 </script>
 
 {!! Html::script('https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js') !!}
