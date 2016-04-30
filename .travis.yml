@@ -1,0 +1,25 @@
+language: php
+php:
+  - '5.5'
+  - '5.6'
+  - '7.0'
+  - nightly
+
+before_script:
+  - cp .env.travis .env
+  - echo "" >> "storage/database.sqlite"
+  - echo "" >> "database/database.sqlite"
+  - echo 'date.timezone = "America/SaoPaulo"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  - composer self-update
+  - composer install --no-interaction
+  - php artisan optimize
+  - php artisan key:generate
+  - mkdir build
+  - mkdir build/logs
+
+script:
+  - vendor/bin/phpunit
+  - vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml -v
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
