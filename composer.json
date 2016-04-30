@@ -37,7 +37,7 @@
         ],
         "post-install-cmd": [
             "php -r \"file_put_contents('storage/database.sqlite', '');\"",
-            "php -r \"copy('.env.example', '.env');\"",
+            "php -r \"if(!file_exists('.env')) copy('.env.example', '.env');\"",
             "php artisan key:generate",
             "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan optimize",
